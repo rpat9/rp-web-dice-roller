@@ -10,14 +10,54 @@
         
         <title>Rudra: Web Dice Roller</title>
 
+        <link rel="stylesheet" href="style.css">
+
     </head>
 
     <body>
 
-        <h1>Test! This is web dice roller</h1>
+        <div class="container">
+
+            <h1>Race to 20</h1>
+            <p>Roll the die and try to reach 20 before the computer does!</p>
+
+
+            <div class="scoreboard">
+
+                <div class="playerScore">
+                    <h2>Player</h2>
+                    <p id="player-score">Score: 0</p>
+                </div>
+
+
+                <div class="computerScore">
+                    <h2>Computer</h2>
+                    <p id="computer-score">Score: 0</p>
+                </div>
+
+            </div>
+
+
+            <div class="dice-display">
+
+                <p>Your Last Roll:</p>
+
+                <div class="dice">
+                    <img src="images/dice-six-faces-one.png" id="dice-image">
+                </div>
+
+            </div>
+
+
+            <button id="roll-button" autofocus> Roll </button>
+            
+            <button id="reset-button"> Reset </button>
+
+
+        </div>
         
         <script src="app.js"></script>
-        
+
     </body>
 
 </html>

@@ -1,26 +1,34 @@
 let playerScore = 0;
 let computerScore = 0;
 const winningScore = 20;
+const apiURL = 'https://rp-web-diceroller-nodejs-cfhfa0c3gxe7geh3.centralus-01.azurewebsites.net/api/roll';
 
 document.addEventListener('DOMContentLoaded', initializeGame());
 
-function initializeGame() {
+async function initializeGame() {
     document.getElementById("roll-button").addEventListener("click", rollDice);
     document.getElementById("reset-button").addEventListener("click", resetGame);
     rollDice();
 }
 
-function getRandomDiceValue() {
-    return Math.floor(Math.random() * 6) + 1;
-}
 
-function rollDice() {
-    let playerRoll = getRandomDiceValue();
-    let computerRoll = getRandomDiceValue();
+async function rollDice() {
+    
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
 
-    updateScores(playerRoll, computerRoll);
-    updtateDiceDisplay(playerRoll);
-    checkWinner();
+        const playerRoll = data.playerRoll;
+        const computerRoll = data.computerRoll;
+
+        updateScores(playerRoll, computerRoll);
+        updtateDiceDisplay(playerRoll);
+        checkWinner();
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+
 }
 
 
